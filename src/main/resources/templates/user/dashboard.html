@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" th:replace = "~{base :: parent(~{::#content}, ~{::title}, ~{::script})}">
+<head>
+    <title data-th-text="${LoggedInUser.name}+ ' | Dashboard'">Dashboard Page</title>
+</head>
+<body>
+    
+    <div id="content">
+
+        <!-- Sidebar -->
+
+        <!-- User is logged in : Sidebar -->
+
+        <div th:if="${LoggedInUser}">
+            <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+        </div>
+
+
+        <!-- <div class="pl-0 md:pl-64 pt-16">
+    
+            <div class="flex flex-col justify-center items-center">
+                <h1>Welcome, <span th:text="${LoggedInUser.name}"></span> 👋</h1>
+                
+                <div class="stats">
+                    <p>Total Contacts: <strong data-th-text="${totalContacts}"></strong></p>
+                </div>
+
+                <div class="actions">
+                    <a th:href="@{/user/contacts/add}" class="btn btn-primary">➕ Add New Contact</a>
+                    <a th:href="@{/user/contacts}" class="btn btn-secondary">📑 View All Contacts</a>
+                </div>
+
+                <h3>Recent Contacts</h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Name</th><th>Email</th><th>Phone</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="c : ${recentContacts}">
+                        <td th:text="${c.name}"></td>
+                        <td th:text="${c.email}"></td>
+                        <td th:text="${c.phone}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div> -->
+
+    <div class="pl-0 md:pl-64 pt-16 min-h-screen bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-6xl mx-auto px-6 dark:bg-gray-800 dark:text-gray-100">
+        
+        <!-- Welcome Section -->
+        <div class="bg-white shadow rounded-2xl p-6 mb-6 dark:bg-gray-700 dark:text-gray-100">
+            <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+                Welcome, <span th:text="${LoggedInUser.name}"></span>
+            </h1>
+            <p class="text-gray-500 mt-1 dark:text-gray-100">Here’s an overview of your contacts</p>
+        </div>
+        
+        <!-- Stats Section -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            
+            <!-- Total Contacts -->
+            <div class="bg-white p-6 rounded-2xl shadow flex items-center justify-between dark:bg-gray-700 dark:text-gray-100">
+                <div>
+                    <p class="text-sm text-gray-500 dark:text-gray-100">Total Contacts</p>
+                    <p class="text-2xl font-bold text-indigo-600" th:text="${totalContacts}"></p>
+                </div>
+                <div class="bg-indigo-100 p-3 rounded-full dark:text-black">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+            </div>
+            
+            <!-- Add New Contact -->
+            <div class="bg-white p-6 rounded-2xl shadow flex items-center justify-between dark:bg-gray-700 dark:text-gray-100">
+                <div>
+                    <p class="text-sm text-gray-500 dark:text-gray-100">Add Contact</p>
+                    <a th:href="@{'/user/contacts/add'}" 
+                       class="inline-block mt-1 px-3 py-1 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
+                       <i class="fa-solid fa-plus"></i> Add
+                    </a>
+                </div>
+                <div class="bg-green-100 p-3 rounded-full dark:text-black">
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+            </div>
+            
+            <!-- View All -->
+            <div class="bg-white p-6 rounded-2xl shadow flex items-center justify-between dark:bg-gray-700 dark:text-gray-100">
+                <div>
+                    <p class="text-sm text-gray-500 dark:text-gray-100">Manage Contacts</p>
+                    <a th:href="@{'/user/contacts'}"
+                       class="inline-block mt-1 px-3 py-1 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
+                       <i class="fa-solid fa-address-book"></i> View All
+                    </a>
+                </div>
+                <div class="bg-yellow-100 p-3 rounded-full dark:text-black">
+                    <i class="fa-solid fa-address-book"></i>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Recent Contacts -->
+        <div class="bg-white shadow rounded-2xl p-6 w-full dark:bg-gray-700 dark:text-gray-100">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-4 dark:text-gray-100 text-center">Recent Contacts</h3>
+            
+            <table th:if="${recentContacts.size() > 0}" class="w-full rounded-lg overflow-hidden" style="border-spacing: 0 12px;">
+                <thead class="bg-gray-100 text-gray-600 text-sm dark:bg-gray-500 dark:text-gray-100">
+                <tr>
+                    <th class="px-4 py-2 text-left">Profile Picture</th>
+                    <th class="px-4 py-2 text-left">Name</th>
+                    <th class="px-4 py-2 text-left">Email</th>
+                    <th class="px-4 py-2 text-left">Phone</th>
+                </tr>
+                </thead>
+                <tbody class="text-sm text-gray-700">
+                <tr th:each="c, iterStat : ${recentContacts}" 
+                    th:if="${iterStat.index < 5}" class="bg-white shadow rounded-lg dark:bg-gray-700 dark:text-gray-100 border-b dark:border-gray-500 mb-3">
+                    <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"><img src="/docs/images/people/profile-picture-1.jpg" data-th-src="@{*{c.picture}}" onerror = "this.src = 'https://static.vecteezy.com/system/resources/previews/036/280/650/non_2x/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-illustration-vector.jpg'" class="w-10 h-10 rounded-full ml-3" alt="Jese image"></th>
+                    <td class="px-4 py-2" th:text="${c.name}"></td>
+                    <td class="px-4 py-2" th:text="${c.email}"></td>
+                    <td class="px-4 py-2" th:text="${c.phoneNumber}"></td>
+                </tr>
+                </tbody>
+
+                
+            </table>
+
+            <div th:if="${recentContacts.size() == 0}" 
+                class="text-center text-2xl mt-4">
+                No data available
+            </div>
+            
+
+        </div>
+        
+    </div>
+</div>
+
+
+
+    </div>
+
+<script>console.log("Profile Page")</script>
+</body>
+</html>

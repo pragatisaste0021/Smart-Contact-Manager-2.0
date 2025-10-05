@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" th:replace = "~{base :: parent(~{::#content}, ~{::title}, ~{::script})}">
+<head>
+    <title>About Page</title>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div id="content">
+
+        <!-- Header Section -->
+    <header class="bg-blue-600 text-white text-center py-12">
+        <h1 class="text-4xl font-bold">About <span class="text-yellow-400" th:text="${appName}">Smart Contact Manager</span></h1>
+    </header>
+
+    <!-- Content Section -->
+    <div class="container mx-auto py-12 px-4">
+        <!-- Application Description -->
+        <section class="bg-white rounded-lg shadow-md p-8 mb-8 dark:bg-gray-800 dark:border-blue-700 dark:hover:bg-gray-700 dark:text-white">
+            <h2 class="text-3xl font-semibold mb-4" th:text="${appName}">Smart Contact Manager</h2>
+            <p class="text-lg" th:text="${appDescription}">
+                Smart Contact Manager is an efficient solution to manage your contacts securely and effortlessly. It helps you keep all your contacts organized, with features like quick search, cloud backup, and user-friendly interface.
+            </p>
+        </section>
+
+        <!-- Company Information -->
+        <section class="bg-white rounded-lg shadow-md p-8 mb-8 dark:bg-gray-800 dark:border-blue-700 dark:hover:bg-gray-700 dark:text-white">
+            <h3 class="text-2xl font-semibold mb-4">About the Company</h3>
+            <p class="text-lg mb-4" th:text="'Company: ' + ${companyName}">
+                Smart Solutions Inc. is a leading provider of software solutions that aim to simplify everyday tasks. We focus on creating user-friendly applications that offer a seamless experience.
+            </p>
+            <p class="text-lg mb-4" th:text="'Founders: ' + ${founders}">
+                Founded by innovative minds, John Doe and Jane Smith, Smart Solutions Inc. was established with the vision of improving productivity through smart digital tools.
+            </p>
+            <p class="text-lg mb-4" th:text="'Founded in: ' + ${year}">
+                Established in 2025, Smart Solutions Inc. continues to grow and develop innovative solutions to help individuals and businesses manage their contacts with ease.
+            </p>
+        </section>
+
+        <!-- Vision Section -->
+        <section class="bg-white rounded-lg shadow-md p-8 dark:bg-gray-800 dark:border-blue-700 dark:hover:bg-gray-700 dark:text-white">
+            <h3 class="text-2xl font-semibold mb-4">Our Vision</h3>
+            <p class="text-lg">
+                Our vision is to provide a secure, simple, and fast way for individuals and businesses to manage their contacts and communication efficiently. We believe that managing contacts should be effortless and intuitive.
+            </p>
+        </section>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto text-center">
+          <p>&copy; 2024 Contact Manager. All rights reserved.</p>
+          <p>Follow us on <a href="#" class="text-blue-400">Facebook</a>, <a href="#"
+                                                                             class="text-blue-400">Twitter</a>, and <a
+                  href="#" class="text-blue-400">Instagram</a>.</p>
+        </div>
+      </footer>
+      
+    </div>
+</div>
+
+<script>console.log("About Page")</script>
+
+<script>console.log("Second About Page")</script>
+</body>
+</html>

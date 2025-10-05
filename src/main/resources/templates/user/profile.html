@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" th:replace = "~{base :: parent(~{::#content}, ~{::title}, ~{::script})}">
+<head>
+    <title data-th-text="${LoggedInUser.name}+ ' | SCM'">Profile Page</title>
+</head>
+<body class="min-h-screen overflow-auto">
+    
+    <div id="content">
+
+        <!-- Sidebar -->
+
+        <!-- User is logged in : Sidebar -->
+
+        <div th:if="${LoggedInUser}">
+            <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+        </div>
+
+
+        <div class="pl-0 md:pl-64 pt-16">
+    
+            <div class="flex flex-col justify-center items-center md:mt-10">
+                
+                <!-- Profile Card -->
+                
+                <div class="mx-auto bg-white rounded-lg shadow-lg w-1/2 dark:bg-gray-800 max-w-xl">
+                    <!-- Profile Header with Image and Name -->
+                    <div class="flex flex-col items-center">
+                      <!-- <img src="path-to-profile-bg.jpg" alt="Background Image" class="w-full h-32 object-cover"> -->
+                      
+                        <img data-th-src = "${LoggedInUser.profilePic}" src="path-to-profile-pic.jpg" alt="Profile Picture" class="w-44 h-44 border-4 border-white rounded-full object-cover shadow-lg">
+                    
+                    
+                  
+                    <!-- Profile Content -->
+                    
+                        <!-- User Name -->
+                        <h2 data-th-text="${LoggedInUser.name}" class="text-2xl font-semibold text-gray-800 dark:text-gray-500">John Doe</h2>
+                        <!-- Email -->
+                        <p data-th-text="${LoggedInUser.email}" class="text-sm text-gray-500 mt-2">john.doe@example.com</p>
+            
+                  
+                      <!-- About Section -->
+                    
+                        
+                        <p data-th-text="${LoggedInUser.about}" class="text-sm text-gray-600 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus viverra euismod leo at hendrerit. Nulla condimentum mauris ut elit tincidunt, sed laoreet felis ullamcorper.</p>
+                  
+                      <!-- Phone Number Section -->
+
+                      <p data-th-text="${LoggedInUser.phoneNumber}" class="text-sm text-gray-600 mt-2">+1 (123) 456-7890</p>
+                  
+                      <!-- Email Verified -->
+
+                      <div class="w-full flex justify-between">
+                        <p class="text-sm text-gray-600 mt-2">Email Verified:
+                            <span data-th-text="${LoggedInUser.emailVerified ? 'YES' : 'NO'}" class="text-green-500 font-semibold">Yes</span>
+                          </p>
+                      
+                          <!-- Phone Verified -->
+                          
+                          <p class="text-sm text-gray-600 mt-2">Phone Verified:
+                            <span data-th-text="${LoggedInUser.emailVerified ? 'YES' : 'NO'}" class="text-green-500 font-semibold">No</span>
+                          </p>
+                      </div>
+
+                    </div>
+                  
+                      
+                    </div>
+                  </div>
+                  
+
+            </div>
+    </div>
+
+    </div>
+
+<script>console.log("Profile Page")</script>
+</body>
+</html>
