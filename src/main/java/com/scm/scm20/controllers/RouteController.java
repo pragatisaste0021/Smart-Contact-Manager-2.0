@@ -26,8 +26,7 @@ public class RouteController {
 
     @Autowired
     ContactService contactService;
-
-
+    
     @ModelAttribute
     public void addLoggedInUserInformation(Model model, Authentication authentication){
 
