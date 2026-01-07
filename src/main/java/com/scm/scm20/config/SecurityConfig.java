@@ -29,7 +29,7 @@ public class SecurityConfig {
 
     //     var inMemoryUserDetailsManager = new InMemoryUserDetailsManager(user1, user2);
 
-
+    
     //     return inMemoryUserDetailsManager;
     // }
 
