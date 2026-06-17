@@ -19,8 +19,6 @@ import jakarta.annotation.PostConstruct;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner{
-
-
 	
 	public static void main(String[] args) {
 

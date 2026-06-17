@@ -15,7 +15,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import com.scm.scm20.helpers.CustomLogoutSuccessHandler;
 import com.scm.scm20.services.impl.SecurityCustomUserDetailService;
 
-
 @Configuration
 public class SecurityConfig {
 
@@ -29,7 +28,7 @@ public class SecurityConfig {
 
     //     var inMemoryUserDetailsManager = new InMemoryUserDetailsManager(user1, user2);
 
-
+    
     //     return inMemoryUserDetailsManager;
     // }
 
