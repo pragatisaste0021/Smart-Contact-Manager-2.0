@@ -28,7 +28,14 @@ public class EmailServiceImpl implements EmailService{
         message.setSubject(subject);
         message.setText(body);
         message.setFrom(domainName);
-        eMailSender.send(message);
+        // eMailSender.send(message);
+
+        try {
+                eMailSender.send(message);
+            } 
+            catch (Exception e) {
+                e.printStackTrace();
+            }
     }
 
     @Override
