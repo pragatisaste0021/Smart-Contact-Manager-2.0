@@ -151,7 +151,7 @@ public class PageController {
         user.setName(userForm.getName());
         user.setEmail(userForm.getEmail());
         user.setPassword(userForm.getPassword());
-        user.setAbout(userForm.getPassword());
+        user.setAbout(userForm.getAbout());
         user.setPhoneNumber(userForm.getPhoneNumber());
         user.setProfilePic("https://th.bing.com/th?id=OIP.CG70mC-flvJIYFRVmR9FZwHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.4&pid=3.1&rm=2");
         user.setEnabled(false);
